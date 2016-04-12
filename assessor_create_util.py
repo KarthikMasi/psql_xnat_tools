@@ -220,6 +220,19 @@ def insert_proc_genrocdata(conn, cursor, meta_data_id, experiment_id):
     cursor.execute(cmd, (meta_data_id, experiment_id))
     conn.commit()
 
+def insert_need_inputs_status(conn,cursor,procstatus,proctype, experiment_id):
+    """
+
+    :param conn:
+    :param cursor:
+    :param experiment_id:
+    :param proctype:
+    :return:
+    """
+    cmd = """UPDATE proc_genProcData SET procstatus=(%s), proctype=(%s) WHERE id=(%s)"""
+    cursor.execute(cmd, (procstatus, proctype, experiment_id))
+    conn.commit()
+
 def update_proc_genprocdata_meta_data(cursor):
     """
 
