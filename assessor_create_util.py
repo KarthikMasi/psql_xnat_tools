@@ -1,6 +1,5 @@
 __author__ = 'damons'
 import psycopg2
-from psycopg2.extensions import AsIs
 import sys
 import re
 import datetime
@@ -9,15 +8,15 @@ import datetime
 def get_connection(dbname='xnat', user='xnat', password=''):
     """
 
-    :param dbname:
-    :param user:
-    :param password:
-    :return:
+    :param dbname: The postgres database name
+    :param user: The postgres username
+    :param password: The associated password with the postgres user
+    :return: psycopg2 connection object
     """
     try:
      conn = psycopg2.connect(dbname=dbname,
                              password=password, user=user,
-                             host='masijenkins.vuse.vanderbilt.edu')
+                             host=None)
     except psycopg2.OperationalError:
      print "FATAL: Caught an OperationalError. Please check your dbname, " \
            "host ip address, username, and password"
@@ -27,8 +26,8 @@ def get_connection(dbname='xnat', user='xnat', password=''):
 def get_cursor(connection):
     """
 
-    :param connection:
-    :return:
+    :param connection: psycopg2 Connection object
+    :return: Re
     """
 
     return connection.cursor()
