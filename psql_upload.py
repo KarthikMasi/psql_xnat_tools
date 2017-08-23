@@ -1,11 +1,7 @@
 __author__ = 'damons'
-__purpose__ = 'Every now and then a database transaction trashes and leaves a project in a perpetually ' \
-              'corrupt state the purpose of this script is to find those and delete them'
 
-from dax import XnatUtils
+
 import psycopg2
-import sys
-from psycopg2 import OperationalError
 import datetime
 import os
 import paramiko
